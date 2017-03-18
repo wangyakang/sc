@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<!--<link rel="stylesheet" href="{CSS_PATH}mycss/base.css">
+	<link rel="stylesheet" href="{CSS_PATH}mycss/main.css">-->
+	<link rel="stylesheet" href="{CSS_PATH}mycss/stylehead.css">
+		<script src="{JS_PATH}myjs/jquery.min.js"></script>
+	</head>
+	<body>
+<!-- top -->
+	<div class="m_top">
+		<div class="m_toph">
+			<div class="m_topcen">
+				<img src="{IMG_PATH}myimg/kfrx.png" alt="" class="m_tel">
+				<a href=""><span class="m_texto">English</span></a>
+				<span class="m_texto">|</span>
+				<a href=""><span class="m_texto">中文</span></a>
+				<span class="m_texto">|</span>
+				<a href=""><span class="m_textt">登录</span></a>
+				<span class="m_text">您好，请您先</span>
+			</div>
+		</div>
+		<div class="logokuai">
+			<img src="{IMG_PATH}myimg/logo.png" alt="" class="logo">
+						 
+			<div class="daohang">
+			
+				{pc:content action="category" catid="0" num="10"}
+				{php $i=0}
+					{loop $data $r}
+					{$i++}
+					{if $i==1}
+					<a href="{siteurl($siteid)}" {if !$catid}class="first"{/if}><span class="ziys">{$r[catname]}</span></a>{else}
+						 <a href="{$r[url]}" {if $r[catid]==$catid}class="first"{/if}><span class="ziys">{$r[catname]}</span></a>
+						 {/if}
+					{/loop}
+					
+				{/pc}
+				
+			</div>
+		</div>
+	</div>
+	<script>
+	$(document).ready(function(){
+		$("daohang a").click(function(){
+	$(".daohang").children().removeClass().end().find($(this)).addClass("first");
+})
+		})
+	</script>

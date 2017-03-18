@@ -1,0 +1,77 @@
+{template "content","header"}
+	<link rel="stylesheet" href="{CSS_PATH}mycss/base.css">
+	<link rel="stylesheet" href="{CSS_PATH}mycss/main.css">
+	<link rel="stylesheet" href="{CSS_PATH}mycss/style.css">
+	<script src="{JS_PATH}myjs/jquery.min.js"></script>
+	<script src="{JS_PATH}myjs/erjiye.js"></script>
+
+
+<div class="nybanner">
+		<img src="{$CATEGORYS[$top_parentid][image]}" alt="">
+	</div>
+<div class="inpage_main">
+		<ul class="about_left">
+			<div class="caption">
+				<!--{pc:content action="category" catid="$CAT[parentid]" num="1"}-->
+				<!--{loop $data $v}-->
+				<p>{$CATEGORYS[$top_parentid][catname]}</p>
+				<a href="">about us</a>
+				<!--{/loop}-->
+				<!--{/pc}-->
+			</div>
+			<ul class="captionmenu">
+				{pc:content action="category" catid="$catid" order="id ASC" num="20"}
+				{php $i=0}
+					{loop $data $r}
+					{$i++}
+					{if $i==6}
+					{pc:content action="category" catid="21" order="id ASC" num="1"}
+							{loop $data $q}
+						<div class="qitaleibox">
+							<a href="javascriptvoid:(0)" class="us">{$r[catname]}</a>	 
+						</div>
+						<div class="dier">
+							<div class="diera" id="company_honor" svalue="company_honor">
+							 	<a href="{$q[url]}">>{$q[catname]}</a>
+							</div>
+						</div>
+						{/loop}
+						{/pc}
+						{else}
+						<li class="chushise"><a href="{$r[url]}">{$r[catname]}</a></li>
+						
+						{/if}
+					{/loop}		
+				{/pc}
+				
+				<!--{$catid}
+				{$v[catid]}
+				{$v[catname]}
+				{$r[catid]}
+				{$r[catname]}-->
+			</ul>
+			
+		</ul>
+	<ul class="fanyea">
+		<li class="first1">
+			<div class="aboutus_right">
+			<div class="profietop">
+			<div class="pagposit"><a href="{siteurl($siteid)}" style="color:#999;">首页</a><span>/</span><span>{$CATEGORYS[$top_parentid][catname]}</span><span>/</span><span>{$CATEGORYS[$catid][catname]}</span>
+				
+			</div>
+            	{pc:content action="lists" catid="$catid" num="1" moreinfo="1" }
+				{loop $data $r}
+                	<h3>{$r[title]}</h3>
+           	</div>
+       
+                	 <div class="procontent">
+                	 	<p class="chushizi">{$r[content]}</p>
+                	 </div>
+                {/loop}
+ 				{/pc}
+           </div>
+    </li>
+	</ul>
+			
+</div>
+{template "content","footer"}
